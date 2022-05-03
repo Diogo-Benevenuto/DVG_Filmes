@@ -13,19 +13,24 @@ namespace DVG_FilmesWeb.Model
     {
         [Key]
         public int Id { get; set; }
+        [Display(Name = "Categoria")]
         public int IdCategoria { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Informe o Nome")]
         [StringLength(50)]
         [Unicode(false)]
         public string Nome { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Informe a Descrição")]
         [StringLength(200)]
         [Unicode(false)]
-        public string Descrição { get; set; }
-        public double Preco { get; set; }
 
+        public string Descrição { get; set; }
+        [Required(ErrorMessage = "Informe o Preço")]
+        [Display(Name ="Preço")]
+        public double Preco { get; set; }
+        
         [ForeignKey("IdCategoria")]
         [InverseProperty("Tbfilmes")]
+        [Display(Name = "Categoria")]
         public virtual Tbcategorias IdCategoriaNavigation { get; set; }
     }
 }

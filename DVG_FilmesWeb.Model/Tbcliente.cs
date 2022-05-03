@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace DVG_FilmesWeb.Model
 {
     [Table("TBCliente")]
@@ -13,21 +14,21 @@ namespace DVG_FilmesWeb.Model
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O CPF deve conter 11 caracteres")]
         [Column("CPF")]
         [StringLength(60)]
         [Unicode(false)]
         [Display(Name ="CPF")]
         public string Cpf { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Informe o Nome")]
         [StringLength(60)]
         [Unicode(false)]
         public string Nome { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Informe o Telefone")]
         [StringLength(20)]
         [Unicode(false)]
         public string Telefone { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Informe o Email")]
         [StringLength(60)]
         [Unicode(false)]
         public string Email { get; set; }
