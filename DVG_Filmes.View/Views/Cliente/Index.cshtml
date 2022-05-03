@@ -1,16 +1,47 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-    ViewData["Title"] = "DVG Clientes";
-}
-<div class="text-center">
-    <h1 class="display-4">DVG Clientes</h1>
-    <p>Cadastro e Lista de Clientes</p>
-    <div>
-        <p>
-             <a class="nav-link text-dark" asp-area="" asp-controller="Cliente" asp-action="CadCliente">Cadastro de Cliente</a>
-        </p>
-    </div>
+﻿@model IEnumerable<DVG_FilmesWeb.Model.Tbclientes>
 
-</div>
+@{
+    ViewData["Title"] = "Lista de Clientes";
+}
+
+<h1>Lista de Clientes</h1>
+
+<p>
+    <a asp-action="Create">Cadastrar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Documento">Alterar</a> |
+                <a asp-action="Details" asp-route-id="@item.Documento">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Documento">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

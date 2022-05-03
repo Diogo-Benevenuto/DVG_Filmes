@@ -1,16 +1,17 @@
-﻿@model DVG_Filmes.View.Models.Cliente
+﻿@model DVG_FilmesWeb.Model.Tbclientes
 
 @{
-    ViewData["Title"] = "Cadastro de Cliente";
-    Layout = "_Layout_Novo";
+    ViewData["Title"] = "Alterar cliente";
 }
 
-<h4>Cadastro de Cliente</h4>
+<h1>Alterar Cliente</h1>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CadCliente">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Documento" />
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
                 <input asp-for="Nome" class="form-control" />
@@ -22,24 +23,19 @@
                 <span asp-validation-for="Telefone" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CPF" class="control-label"></label>
-                <input asp-for="CPF" class="form-control" />
-                <span asp-validation-for="CPF" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Incluir" class="btn btn-primary" />
+                <input type="submit" value="Salvar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Voltar</a>
 </div>
 
 @section Scripts {
