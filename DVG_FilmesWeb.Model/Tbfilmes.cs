@@ -12,20 +12,26 @@ namespace DVG_FilmesWeb.Model
     public partial class Tbfilmes
     {
         [Key]
+
         public int Id { get; set; }
+        [Display(Name ="Categoria")]
         public int IdCategoria { get; set; }
         [Required]
         [StringLength(50)]
         [Unicode(false)]
+        [Display(Name ="Filme/Serie")]
         public string Nome { get; set; }
         [Required]
         [StringLength(200)]
         [Unicode(false)]
+        [Display(Name ="Descrição")]
         public string Descrição { get; set; }
+        [Display(Name ="Preço")]
         public double Preco { get; set; }
 
         [ForeignKey("IdCategoria")]
         [InverseProperty("Tbfilmes")]
+        [Display(Name ="Categoria")]
         public virtual Tbcategorias IdCategoriaNavigation { get; set; }
     }
 }
