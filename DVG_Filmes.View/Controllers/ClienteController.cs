@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using DVG_FilmesWeb.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace DVG_Filmes.View.Controllers
 {
@@ -15,9 +16,9 @@ namespace DVG_Filmes.View.Controllers
         }
         public ActionResult Index()
         {
-            List<Tbclientes> oLista = odb.Tbclientes.ToList();
+            List<Tbcliente> oLista = odb.Tbcliente.ToList();
             return View(oLista);
-           
+            
         }
 
         // GET: ClienteController/Details/5
@@ -35,29 +36,30 @@ namespace DVG_Filmes.View.Controllers
         // POST: ClienteController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Tbclientes oCat)
+        public ActionResult Create(Tbcliente oCat)
         {
-            odb.Tbclientes.Add(oCat);
+            odb.Tbcliente.Add(oCat);
             odb.SaveChanges();
             return RedirectToAction("Index");
         }
 
         // GET: ClienteController/Edit/5
-        public ActionResult Edit(String Documento)
+        public ActionResult Edit(int id)
         {
-            Tbclientes oCat = odb.Tbclientes.Find(Documento);
+            Tbcliente oCat = odb.Tbcliente.Find(id);
             return View(oCat);
         }
 
         // POST: ClienteController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(String Documento, Tbclientes oCat)
+        public ActionResult Edit(int id, Tbcliente oCat)
         {
-            var oCatBanco = odb.Tbclientes.Find();
+            var oCatBanco = odb.Tbcliente.Find(id);
             oCatBanco.Nome = oCat.Nome;
-            oCatBanco.Email = oCat.Email;
             oCatBanco.Telefone = oCat.Telefone;
+            oCatBanco.Cpf = oCat.Cpf;
+            oCatBanco.Email = oCat.Email;
             odb.Entry(oCatBanco).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             odb.SaveChanges();
             return RedirectToAction("Index");
@@ -66,7 +68,11 @@ namespace DVG_Filmes.View.Controllers
         // GET: ClienteController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Tbcliente oCat = odb.Tbcliente.Find(id);
+            var oCatBanco = odb.Tbcliente.Find(id);
+            odb.Entry(oCatBanco).State =EntityState.Deleted;
+            odb.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // POST: ClienteController/Delete/5

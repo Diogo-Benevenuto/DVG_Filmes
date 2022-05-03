@@ -17,12 +17,10 @@ namespace DVG_FilmesWeb.Model
         }
 
         [Key]
-        [Display(Name ="Código")]
         public int Id { get; set; }
         [Required]
         [StringLength(20)]
         [Unicode(false)]
-        [Display(Name ="Categoria")]
         public string Descricao { get; set; }
 
         [InverseProperty("IdCategoriaNavigation")]

@@ -8,24 +8,28 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DVG_FilmesWeb.Model
 {
-    [Table("TBFilmes")]
-    public partial class Tbfilmes
+    [Table("TBCliente")]
+    public partial class Tbcliente
     {
         [Key]
         public int Id { get; set; }
-        public int IdCategoria { get; set; }
         [Required]
-        [StringLength(50)]
+        [Column("CPF")]
+        [StringLength(60)]
+        [Unicode(false)]
+        [Display(Name ="CPF")]
+        public string Cpf { get; set; }
+        [Required]
+        [StringLength(60)]
         [Unicode(false)]
         public string Nome { get; set; }
         [Required]
-        [StringLength(200)]
+        [StringLength(20)]
         [Unicode(false)]
-        public string Descrição { get; set; }
-        public double Preco { get; set; }
-
-        [ForeignKey("IdCategoria")]
-        [InverseProperty("Tbfilmes")]
-        public virtual Tbcategorias IdCategoriaNavigation { get; set; }
+        public string Telefone { get; set; }
+        [Required]
+        [StringLength(60)]
+        [Unicode(false)]
+        public string Email { get; set; }
     }
 }

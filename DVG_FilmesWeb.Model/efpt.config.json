@@ -18,6 +18,10 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[TBCliente]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[TBClientes]",
          "ObjectType": 0
       },

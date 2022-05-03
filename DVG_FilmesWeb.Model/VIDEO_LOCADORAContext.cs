@@ -19,6 +19,7 @@ namespace DVG_FilmesWeb.Model
         }
 
         public virtual DbSet<Tbcategorias> Tbcategorias { get; set; }
+        public virtual DbSet<Tbcliente> Tbcliente { get; set; }
         public virtual DbSet<Tbclientes> Tbclientes { get; set; }
         public virtual DbSet<Tbfilmes> Tbfilmes { get; set; }
         public virtual DbSet<Tblocados> Tblocados { get; set; }
